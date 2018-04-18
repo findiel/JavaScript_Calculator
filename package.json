@@ -1,0 +1,27 @@
+{
+  "name": "javascript_calculator",
+  "version": "1.0.0",
+  "description": "JavaScript Calculator.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fjollsfinn/JavaScript_Calculator.git"
+  },
+  "keywords": [
+    "calculator",
+    "web-app",
+    "freecodecamp"
+  ],
+  "author": "Bartłomiej Tuchowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fjollsfinn/JavaScript_Calculator/issues"
+  },
+  "homepage": "https://github.com/Fjollsfinn/JavaScript_Calculator#readme",
+  "devDependencies": {
+    "node-sass": "^4.8.3"
+  }
+}
