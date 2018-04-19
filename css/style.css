@@ -25,7 +25,7 @@ html {
   height: auto;
   background-color: black;
   border: 2px solid whitesmoke;
-  border-radius: 1px; }
+  border-radius: .5rem; }
   .calc-box .output {
     color: white;
     height: 9rem;
