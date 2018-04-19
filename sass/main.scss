@@ -5,7 +5,9 @@
 }
 
 //Varibles.
-
+$color-red: #d9534f;
+$color-blue: #5bc0de;
+$color-btn: #092026 ;
 
 //Mixins.
 
@@ -64,19 +66,21 @@ body {
             width: 9rem;
             height: 8.4rem;
             color: white;
-            background-color: black;
+            background-color: $color-btn;
             font-size: 3rem;
             font-weight: bold;
             //border: 1px solid whitesmoke;
             border: none;
             outline: none;
+            display: block;
+            float: left;
 
             &--red {
-                background-color: red;
+                background-color: $color-red;
             }
 
             &--blue {
-                background-color: blue;
+                background-color: $color-blue;
             }
 
             &--heighter {

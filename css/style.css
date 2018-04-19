@@ -40,15 +40,17 @@ html {
     width: 9rem;
     height: 8.4rem;
     color: white;
-    background-color: black;
+    background-color: #092026;
     font-size: 3rem;
     font-weight: bold;
     border: none;
-    outline: none; }
+    outline: none;
+    display: block;
+    float: left; }
     .calc-box__buttons .btn--red {
-      background-color: red; }
+      background-color: #d9534f; }
     .calc-box__buttons .btn--blue {
-      background-color: blue; }
+      background-color: #5bc0de; }
     .calc-box__buttons .btn--heighter {
       height: 16.8rem; }
     .calc-box__buttons .btn--widther {
