@@ -36,22 +36,24 @@ html {
       font-size: 5rem; }
     .calc-box .output__equation {
       font-size: 1.5rem; }
-  .calc-box__buttons .btn {
-    width: 9rem;
-    height: 8.4rem;
-    color: white;
-    background-color: #092026;
-    font-size: 3rem;
-    font-weight: bold;
-    border: none;
-    outline: none;
-    display: block;
-    float: left; }
-    .calc-box__buttons .btn--red {
-      background-color: #d9534f; }
-    .calc-box__buttons .btn--blue {
-      background-color: #5bc0de; }
-    .calc-box__buttons .btn--heighter {
-      height: 16.8rem; }
-    .calc-box__buttons .btn--widther {
-      width: 18rem; }
+  .calc-box__buttons {
+    display: grid;
+    grid-template-rows: repeat(5, 8.4rem);
+    grid-template-columns: repeat(4, 9rem); }
+    .calc-box__buttons .btn {
+      color: white;
+      background-color: #092026;
+      font-size: 3rem;
+      font-weight: bold;
+      border: none;
+      outline: none; }
+      .calc-box__buttons .btn--red {
+        background-color: #d9534f; }
+      .calc-box__buttons .btn--blue {
+        background-color: #5bc0de; }
+      .calc-box__buttons .btn--heighter {
+        grid-row: 4 / 6;
+        grid-column: 4 / 5; }
+      .calc-box__buttons .btn--widther {
+        grid-column-start: 1;
+        grid-column-end: 3; }

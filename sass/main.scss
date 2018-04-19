@@ -61,10 +61,10 @@ body {
     }
 
     &__buttons {
-        
+        display: grid;
+        grid-template-rows: repeat(5, 8.4rem);
+        grid-template-columns: repeat(4, 9rem);
         .btn {
-            width: 9rem;
-            height: 8.4rem;
             color: white;
             background-color: $color-btn;
             font-size: 3rem;
@@ -72,8 +72,8 @@ body {
             //border: 1px solid whitesmoke;
             border: none;
             outline: none;
-            display: block;
-            float: left;
+            //display: block;
+            //float: left;
 
             &--red {
                 background-color: $color-red;
@@ -84,11 +84,13 @@ body {
             }
 
             &--heighter {
-                height: 16.8rem;
+                grid-row: 4 / 6;
+                grid-column: 4 / 5;
             }
 
-            &--widther {
-                width: 18rem;
+            &--widther{
+                grid-column-start: 1;
+                grid-column-end: 3;
             }
         }
 
