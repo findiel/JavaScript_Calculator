@@ -46,7 +46,13 @@ html {
       font-size: 3rem;
       font-weight: bold;
       border: none;
-      outline: none; }
+      outline: none;
+      transition: .2s transform linear; }
+      .calc-box__buttons .btn:hover {
+        transform: translateY(-0.3rem);
+        box-shadow: 0.1rem 0.1rem 1rem 0.3rem rgba(170, 245, 250, 0.986); }
+      .calc-box__buttons .btn:active {
+        transform: translateY(-0.1rem); }
       .calc-box__buttons .btn--red {
         background-color: #d9534f; }
       .calc-box__buttons .btn--blue {

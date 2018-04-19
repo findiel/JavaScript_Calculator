@@ -69,11 +69,18 @@ body {
             background-color: $color-btn;
             font-size: 3rem;
             font-weight: bold;
-            //border: 1px solid whitesmoke;
             border: none;
             outline: none;
-            //display: block;
-            //float: left;
+            transition: .2s transform linear;
+
+            &:hover {
+                transform: translateY(-0.3rem);
+                box-shadow: .1rem .1rem 1rem .3rem rgba(170, 245, 250, 0.986);
+            }
+
+            &:active {
+                transform: translateY(-0.1rem);
+            }
 
             &--red {
                 background-color: $color-red;
