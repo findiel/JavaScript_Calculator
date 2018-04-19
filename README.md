@@ -1,4 +1,6 @@
 # ABOUT
+I'm currently working about the calculator mechanics, so stay tuned :). <br />
+
 JavaScript Calculator. <br />
 
 User Story: You can add, subtract, multiply and divide two numbers. <br />
