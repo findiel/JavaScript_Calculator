@@ -8,8 +8,6 @@
         <title>JavaScript_Calculator</title>
 
         <link rel="stylesheet" href="css/style.css">
-        <script src="js/script.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
         <div class="bg-video">
@@ -20,33 +18,32 @@
         </div>
         <div class="calc-box">
             <div class="output">
-                <div class="output__score">
-                    &rarr; 55
-                </div>
+                <div class="output__score">0</div>
                 <div class="output__equation">
                     50 + 5
                 </div>
             </div>
             <div class="calc-box__buttons">
-                <button class="btn btn--red">AC</button>
-                <button class="btn btn--red">CE</button>
-                <button class="btn">&divide;</button>
-                <button class="btn">&lowast;</button>
-                <button class="btn">7</button>
-                <button class="btn">8</button>
-                <button class="btn">9</button>
-                <button class="btn">&minus;</button>
-                <button class="btn">4</button>
-                <button class="btn">5</button>
-                <button class="btn">6</button>
-                <button class="btn">&plus;</button>
-                <button class="btn">1</button>
-                <button class="btn">2</button>
-                <button class="btn">3</button>
-                <button class="btn btn--blue btn--heighter">=</button>
-                <button class="btn btn--widther">0</button>
-                <button class="btn">&sdot;</button>
+                <button class="btn btn--red" value="remove-all">AC</button>
+                <button class="btn btn--red" value="remove-last">CE</button>
+                <button class="btn" value="divide">&divide;</button>
+                <button class="btn" value="multiply">&lowast;</button>
+                <button class="btn" value="7">7</button>
+                <button class="btn" value="8">8</button>
+                <button class="btn" value="9">9</button>
+                <button class="btn" value="minus">&minus;</button>
+                <button class="btn" value="4">4</button>
+                <button class="btn" value="5">5</button>
+                <button class="btn" value="6">6</button>
+                <button class="btn" value="plus">&plus;</button>
+                <button class="btn" value="1">1</button>
+                <button class="btn" value="2">2</button>
+                <button class="btn" value="3">3</button>
+                <button class="btn btn--blue btn--heighter" value="equal">=</button>
+                <button class="btn btn--widther" value="0">0</button>
+                <button class="btn" value="dot">&sdot;</button>
             </div>
         </div>
+        <script src="js/bundle.js"></script>
     </body>
 </html>

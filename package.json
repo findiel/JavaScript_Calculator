@@ -4,7 +4,8 @@
   "description": "JavaScript Calculator.",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+    "compile:sass": "node-sass sass/main.scss css/style.css -w",
+    "build": "browserify js/script.js js/functions.js -o js/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/Fjollsfinn/JavaScript_Calculator#readme",
   "devDependencies": {
+    "browserify": "^16.2.2",
     "node-sass": "^4.8.3"
   }
 }
