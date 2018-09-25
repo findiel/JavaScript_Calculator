@@ -1,24 +1,23 @@
-//TO DO: shortercode --> screenContext
-let screenContext = document.querySelector('.output__score').textContent;
+let UIController = require('./UIController');
 module.exports = {
     enterNumber: (num) => {
-        if (document.querySelector('.output__score').textContent === "0") {
+        if (document.querySelector(UIController.DOMelements.mainScreen).textContent === "0") {
             return num;
         } else {
-            return document.querySelector('.output__score').textContent + num;
+            return document.querySelector(UIController.DOMelements.mainScreen).textContent + num;
         }
     },
 
     updateScreen: (arg) => {
-        document.querySelector('.output__score').textContent = arg;
+        document.querySelector(UIController.DOMelements.mainScreen).textContent = arg;
     },
 
     delete: () => {
-        document.querySelector('.output__score').textContent = "0";
+        document.querySelector(UIController.DOMelements.mainScreen).textContent = "0";
     },
 
     removeLast: () => {
-        let currNumber = document.querySelector('.output__score').textContent;
+        let currNumber = document.querySelector(UIController.DOMelements.mainScreen).textContent;
         if (currNumber.length < 2) {
             return "0";
         } else {

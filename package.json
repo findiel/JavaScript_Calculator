@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "compile:sass": "node-sass sass/main.scss css/style.css -w",
-    "build": "browserify js/script.js js/functions.js -o js/bundle.js"
+    "build": "browserify js/script.js js/functions.js js/UIController.js -o js/bundle.js"
   },
   "repository": {
     "type": "git",
