@@ -12,6 +12,14 @@ module.exports = {
         document.querySelector(UIController.DOMelements.mainScreen).textContent = arg;
     },
 
+    add: (firstNumber, secoundNumber) => {
+        return parseInt(firstNumber) + parseInt(secoundNumber);
+    },
+
+    subtraction: (firstNumber, secoundNumber) => {
+        return parseInt(firstNumber) - parseInt(secoundNumber); 
+    },
+
     delete: () => {
         document.querySelector(UIController.DOMelements.mainScreen).textContent = "0";
     },

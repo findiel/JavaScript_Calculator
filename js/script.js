@@ -1,45 +1,64 @@
 //IMPORTS
-let functions = require('./functions');
+let calcFunctions = require('./calcFunctions');
 
 //REAL SCRIPT
-let clickCounter = 0;
 let globalVariables = {
     equation: null,
     firstNumber: null,
     secondNumber: null,
-    score: null
+    score: null,
+    clickCounter: 0
 }
 document.addEventListener('click', e => {
     try {
         let nodeValue = e.srcElement.attributes.value.nodeValue;
         if (isNaN(parseInt(nodeValue))) {
             if (nodeValue === 'remove-all') {
-                functions.delete();
+                calcFunctions.delete();
+                globalVariables.firstNumber = "0";
+                globalVariables.secondNumber = "0";
+                globalVariables.clickCounter = 0;
             } else if (nodeValue === 'remove-last') {
-                let newNumber = functions.removeLast();
-                functions.updateScreen(newNumber);
+                let newNumber = calcFunctions.removeLast();
+                if (globalVariables.clickCounter === 0) {
+                    globalVariables.firstNumber = newNumber;
+                    calcFunctions.updateScreen(globalVariables.firstNumber);
+                    console.log(`First Number changed to: ${globalVariables.firstNumber}`);
+                } else {
+                    globalVariables.secondNumber = newNumber;
+                    calcFunctions.updateScreen(globalVariables.secondNumber);
+                    console.log(`Second Number changed to: ${globalVariables.secondNumber}`);
+                }
             } else if (nodeValue === 'plus') {
-                clickCounter++;
-                functions.updateScreen("0");
+                globalVariables.clickCounter++;
+                calcFunctions.updateScreen("0");
                 globalVariables.equation = '+';
+            } else if (nodeValue === 'minus') {
+                globalVariables.clickCounter++;
+                calcFunctions.updateScreen("0");
+                globalVariables.equation = '-';
             } else if (nodeValue === 'equal') {
                 if (globalVariables.equation === '+') {
-                    globalVariables.score = parseInt(globalVariables.firstNumber) + parseInt(globalVariables.secondNumber);
-                    functions.updateScreen(globalVariables.score);
+                    globalVariables.score = calcFunctions.add(globalVariables.firstNumber, globalVariables.secondNumber);
+                    calcFunctions.updateScreen(globalVariables.score);
+                    globalVariables.firstNumber = globalVariables.score;
+                } else if (globalVariables.equation === '-') {
+                    globalVariables.score = calcFunctions.subtraction(globalVariables.firstNumber, globalVariables.secondNumber);
+                    calcFunctions.updateScreen(globalVariables.score);
+                    globalVariables.firstNumber = globalVariables.score;
                 }
             }
-            console.log("false!");
         } else {
             if (document.querySelector('.output__score').textContent.length > 12) {
                 throw "Number Limit Error";
             } else {
-                if (clickCounter === 0 ) {
-                    globalVariables.firstNumber = functions.enterNumber(nodeValue);
-                    functions.updateScreen(globalVariables.firstNumber);
+                if (globalVariables.clickCounter === 0 ) {
+                    globalVariables.firstNumber = calcFunctions.enterNumber(nodeValue);
+                    calcFunctions.updateScreen(globalVariables.firstNumber);
                     console.log(`First Number: ${globalVariables.firstNumber}`);
                 } else {
-                    globalVariables.secondNumber = functions.enterNumber(nodeValue);
-                    functions.updateScreen(globalVariables.secondNumber);
+                    globalVariables.secondNumber = calcFunctions.enterNumber(nodeValue);
+                    calcFunctions.updateScreen(globalVariables.secondNumber);
                     console.log(`Second Number: ${globalVariables.secondNumber}`);
                 }
             }
