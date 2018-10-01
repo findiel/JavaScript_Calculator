@@ -21,12 +21,15 @@ module.exports = {
         }
     },
 
-//     if (document.querySelector(UIController.DOMelements.mainScreen).textContent.substr(document.querySelector(UIController.DOMelements.mainScreen).textContent.length - 1 === ".")) {
-//         return document.querySelector(UIController.DOMelements.mainScreen).textContent;
-//     }
-//    else {
-//        return document.querySelector(UIController.DOMelements.mainScreen).textContent + num;
-//    }
+    changeToFloat: () => {
+        if (document.querySelector(UIController.DOMelements.mainScreen).textContent.substr(document.querySelector(UIController.DOMelements.mainScreen).textContent.length - 1) === ".") {
+            return document.querySelector(UIController.DOMelements.mainScreen).textContent;
+        }
+       else {
+           return document.querySelector(UIController.DOMelements.mainScreen).textContent + ".";
+       }
+
+    },
 
     updateScreen: (arg) => {
         document.querySelector(UIController.DOMelements.mainScreen).textContent = arg;
@@ -143,14 +146,14 @@ document.addEventListener('click', e => {
                 globalVariables.equation = '/';
             } 
             //5. DOT button - converting ints to floats
-            else if (nodeValue === '.') {
+            else if (nodeValue === 'dot') {
                 if (globalVariables.clickCounter === 0) {
-                    globalVariables.firstNumber = calcFunctions.enterNumber(nodeValue);
+                    globalVariables.firstNumber = calcFunctions.changeToFloat();
                     calcFunctions.updateScreen(globalVariables.firstNumber);
                     console.log(`First Number: ${globalVariables.firstNumber}`);
                 }
                 else {
-                    globalVariables.secondNumber = calcFunctions.enterNumber(nodeValue);
+                    globalVariables.secondNumber = calcFunctions.changeToFloat();
                     calcFunctions.updateScreen(globalVariables.secondNumber);
                     console.log(`Second Number: ${globalVariables.secondNumber}`);
                 }

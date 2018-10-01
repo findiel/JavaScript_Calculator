@@ -13,12 +13,15 @@ module.exports = {
         }
     },
 
-//     if (document.querySelector(UIController.DOMelements.mainScreen).textContent.substr(document.querySelector(UIController.DOMelements.mainScreen).textContent.length - 1 === ".")) {
-//         return document.querySelector(UIController.DOMelements.mainScreen).textContent;
-//     }
-//    else {
-//        return document.querySelector(UIController.DOMelements.mainScreen).textContent + num;
-//    }
+    changeToFloat: () => {
+        if (document.querySelector(UIController.DOMelements.mainScreen).textContent.substr(document.querySelector(UIController.DOMelements.mainScreen).textContent.length - 1) === ".") {
+            return document.querySelector(UIController.DOMelements.mainScreen).textContent;
+        }
+       else {
+           return document.querySelector(UIController.DOMelements.mainScreen).textContent + ".";
+       }
+
+    },
 
     updateScreen: (arg) => {
         document.querySelector(UIController.DOMelements.mainScreen).textContent = arg;
