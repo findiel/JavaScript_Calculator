@@ -34,7 +34,7 @@ module.exports = {
             return (parseFloat(firstNumber) + parseFloat(secoundNumber)).toPrecision(8);
         } 
         else {
-            return Math.round((parseFloat(firstNumber) + parseFloat(secoundNumber)) * 100) / 100;
+            return Math.round((parseFloat(firstNumber) + parseFloat(secoundNumber)) * 100000000) / 100000000;
         }
     },
 
@@ -43,7 +43,7 @@ module.exports = {
             return (parseFloat(firstNumber) - parseFloat(secoundNumber)).toPrecision(8);
         } 
         else {
-            return Math.round((parseFloat(firstNumber) - parseFloat(secoundNumber)) * 100) / 100;
+            return Math.round((parseFloat(firstNumber) - parseFloat(secoundNumber)) * 100000000) / 100000000;
         }
     },
 
@@ -52,7 +52,7 @@ module.exports = {
             return (parseFloat(firstNumber) * parseFloat(secoundNumber)).toPrecision(8);
         } 
         else {
-            return Math.round((parseFloat(firstNumber) * parseFloat(secoundNumber)) * 100) / 100;
+            return Math.round((parseFloat(firstNumber) * parseFloat(secoundNumber)) * 100000000) / 100000000;
         }
     },
 
@@ -61,7 +61,7 @@ module.exports = {
             return (parseFloat(firstNumber) / parseFloat(secoundNumber)).toPrecision(8);
         } 
         else {
-            return Math.round((parseFloat(firstNumber) / parseFloat(secoundNumber)) * 100) / 100;
+            return Math.round((parseFloat(firstNumber) / parseFloat(secoundNumber)) * 100000000) / 100000000;
         }
     },
 
