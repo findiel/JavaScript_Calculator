@@ -10,22 +10,62 @@ let UIController = require('./UIController');
 module.exports = {
     enterNumber: (num) => {
         if (document.querySelector(UIController.DOMelements.mainScreen).textContent === "0") {
-            return num;
+            if (num == ".") {
+                return "0."
+            }
+            else {
+                return num;
+            }
         } else {
             return document.querySelector(UIController.DOMelements.mainScreen).textContent + num;
         }
     },
 
+//     if (document.querySelector(UIController.DOMelements.mainScreen).textContent.substr(document.querySelector(UIController.DOMelements.mainScreen).textContent.length - 1 === ".")) {
+//         return document.querySelector(UIController.DOMelements.mainScreen).textContent;
+//     }
+//    else {
+//        return document.querySelector(UIController.DOMelements.mainScreen).textContent + num;
+//    }
+
     updateScreen: (arg) => {
         document.querySelector(UIController.DOMelements.mainScreen).textContent = arg;
     },
 
-    add: (firstNumber, secoundNumber) => {
-        return parseInt(firstNumber) + parseInt(secoundNumber);
+    addition: (firstNumber, secoundNumber) => {
+        if ((parseFloat(firstNumber) + parseFloat(secoundNumber) > 999999999)) {
+            return (parseFloat(firstNumber) + parseFloat(secoundNumber)).toPrecision(8);
+        } 
+        else {
+            return Math.round((parseFloat(firstNumber) + parseFloat(secoundNumber)) * 100) / 100;
+        }
     },
 
     subtraction: (firstNumber, secoundNumber) => {
-        return parseInt(firstNumber) - parseInt(secoundNumber); 
+        if ((parseFloat(firstNumber) - parseFloat(secoundNumber) > 999999999)) {
+            return (parseFloat(firstNumber) - parseFloat(secoundNumber)).toPrecision(8);
+        } 
+        else {
+            return Math.round((parseFloat(firstNumber) - parseFloat(secoundNumber)) * 100) / 100;
+        }
+    },
+
+    multiplication: (firstNumber, secoundNumber) => {
+        if ((parseFloat(firstNumber) * parseFloat(secoundNumber) > 999999999)) {
+            return (parseFloat(firstNumber) * parseFloat(secoundNumber)).toPrecision(8);
+        } 
+        else {
+            return Math.round((parseFloat(firstNumber) * parseFloat(secoundNumber)) * 100) / 100;
+        }
+    },
+
+    division: (firstNumber, secoundNumber) => {
+        if ((parseFloat(firstNumber) / parseFloat(secoundNumber) > 999999999)) {
+            return (parseFloat(firstNumber) / parseFloat(secoundNumber)).toPrecision(8);
+        } 
+        else {
+            return Math.round((parseFloat(firstNumber) / parseFloat(secoundNumber)) * 100) / 100;
+        }
     },
 
     delete: () => {
@@ -57,12 +97,16 @@ document.addEventListener('click', e => {
     try {
         let nodeValue = e.srcElement.attributes.value.nodeValue;
         if (isNaN(parseInt(nodeValue))) {
+            //NaN click events
+            //1. AC button - deletes all
             if (nodeValue === 'remove-all') {
                 calcFunctions.delete();
                 globalVariables.firstNumber = "0";
                 globalVariables.secondNumber = "0";
                 globalVariables.clickCounter = 0;
-            } else if (nodeValue === 'remove-last') {
+            }
+            //2. CE button - removes last number
+            else if (nodeValue === 'remove-last') {
                 let newNumber = calcFunctions.removeLast();
                 if (globalVariables.clickCounter === 0) {
                     globalVariables.firstNumber = newNumber;
@@ -73,25 +117,73 @@ document.addEventListener('click', e => {
                     calcFunctions.updateScreen(globalVariables.secondNumber);
                     console.log(`Second Number changed to: ${globalVariables.secondNumber}`);
                 }
-            } else if (nodeValue === 'plus') {
+            } 
+            //3. PLUS button - updating Equation to addition
+            else if (nodeValue === 'plus') {
                 globalVariables.clickCounter++;
                 calcFunctions.updateScreen("0");
                 globalVariables.equation = '+';
-            } else if (nodeValue === 'minus') {
+            } 
+            //4. MINUS button - updating Equation to subtraction
+            else if (nodeValue === 'minus') {
                 globalVariables.clickCounter++;
                 calcFunctions.updateScreen("0");
                 globalVariables.equation = '-';
-            } else if (nodeValue === 'equal') {
+            } 
+            //5. MULTIPLY button - updating Equation to multplication
+            else if (nodeValue === 'multiply') {
+                globalVariables.clickCounter++;
+                calcFunctions.updateScreen("0");
+                globalVariables.equation = '*';
+            } 
+            //5. DIVIDE button - updating Equation to division
+            else if (nodeValue === 'divide') {
+                globalVariables.clickCounter++;
+                calcFunctions.updateScreen("0");
+                globalVariables.equation = '/';
+            } 
+            //5. DOT button - converting ints to floats
+            else if (nodeValue === '.') {
+                if (globalVariables.clickCounter === 0) {
+                    globalVariables.firstNumber = calcFunctions.enterNumber(nodeValue);
+                    calcFunctions.updateScreen(globalVariables.firstNumber);
+                    console.log(`First Number: ${globalVariables.firstNumber}`);
+                }
+                else {
+                    globalVariables.secondNumber = calcFunctions.enterNumber(nodeValue);
+                    calcFunctions.updateScreen(globalVariables.secondNumber);
+                    console.log(`Second Number: ${globalVariables.secondNumber}`);
+                }
+            }
+            //X. EQUAL button - executing calc functions depending on equation
+            else if (nodeValue === 'equal') {
+                // 1. addiotion
                 if (globalVariables.equation === '+') {
-                    globalVariables.score = calcFunctions.add(globalVariables.firstNumber, globalVariables.secondNumber);
+                    globalVariables.score = calcFunctions.addition(globalVariables.firstNumber, globalVariables.secondNumber);
                     calcFunctions.updateScreen(globalVariables.score);
                     globalVariables.firstNumber = globalVariables.score;
-                } else if (globalVariables.equation === '-') {
+                    console.log(`Score: ${globalVariables.score}`);
+                } 
+                //2. subtraction
+                else if (globalVariables.equation === '-') {
                     globalVariables.score = calcFunctions.subtraction(globalVariables.firstNumber, globalVariables.secondNumber);
                     calcFunctions.updateScreen(globalVariables.score);
                     globalVariables.firstNumber = globalVariables.score;
                 }
+                //3. multiplication
+                else if (globalVariables.equation === '*') {
+                    globalVariables.score = calcFunctions.multiplication(globalVariables.firstNumber, globalVariables.secondNumber);
+                    calcFunctions.updateScreen(globalVariables.score);
+                    globalVariables.firstNumber = globalVariables.score;
+                }
+                //4. division
+                else if (globalVariables.equation === '/') {
+                    globalVariables.score = calcFunctions.division(globalVariables.firstNumber, globalVariables.secondNumber);
+                    calcFunctions.updateScreen(globalVariables.score);
+                    globalVariables.firstNumber = globalVariables.score;
+                }
             }
+            //Number click events 
         } else {
             if (document.querySelector('.output__score').textContent.length > 12) {
                 throw "Number Limit Error";
