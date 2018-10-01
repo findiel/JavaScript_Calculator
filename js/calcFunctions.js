@@ -25,8 +25,12 @@ module.exports = {
 
     },
 
-    updateScreen: (arg) => {
+    updateMainScreen: (arg) => {
         document.querySelector(UIController.DOMelements.mainScreen).textContent = arg;
+    },
+
+    updateSubScreen: (arg) => {
+        document.querySelector(UIController.DOMelements.subScreen).textContent = arg;
     },
 
     addition: (firstNumber, secoundNumber) => {

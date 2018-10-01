@@ -1,5 +1,6 @@
 //IMPORTS
 let calcFunctions = require('./calcFunctions');
+let UIController = require('./UIController');
 
 //REAL SCRIPT
 let globalVariables = {
@@ -9,6 +10,11 @@ let globalVariables = {
     score: null,
     clickCounter: 0
 }
+
+//TODO:
+//1. Adding a negative number
+//2. Updating sub screen
+//3. Add key events
 document.addEventListener('click', e => {
     try {
         let nodeValue = e.srcElement.attributes.value.nodeValue;
@@ -26,79 +32,87 @@ document.addEventListener('click', e => {
                 let newNumber = calcFunctions.removeLast();
                 if (globalVariables.clickCounter === 0) {
                     globalVariables.firstNumber = newNumber;
-                    calcFunctions.updateScreen(globalVariables.firstNumber);
+                    calcFunctions.updateMainScreen(globalVariables.firstNumber);
                     console.log(`First Number changed to: ${globalVariables.firstNumber}`);
                 } else {
                     globalVariables.secondNumber = newNumber;
-                    calcFunctions.updateScreen(globalVariables.secondNumber);
+                    calcFunctions.updateMainScreen(globalVariables.secondNumber);
                     console.log(`Second Number changed to: ${globalVariables.secondNumber}`);
                 }
             } 
             //3. PLUS button - updating Equation to addition
             else if (nodeValue === 'plus') {
                 globalVariables.clickCounter++;
-                calcFunctions.updateScreen("0");
+                calcFunctions.updateMainScreen("0");
                 globalVariables.equation = '+';
             } 
-            //4. MINUS button - updating Equation to subtraction
+            //4. MINUS button - updating Equation to subtraction / adding a negative number
             else if (nodeValue === 'minus') {
-                globalVariables.clickCounter++;
-                calcFunctions.updateScreen("0");
-                globalVariables.equation = '-';
+                if (document.querySelector(UIController.DOMelements.mainScreen).textContent === '0') {
+                    //TOTO - then ad your new calcFunction method - just like with a dot button.
+                }
+                else {
+                    globalVariables.clickCounter++;
+                    calcFunctions.updateMainScreen("0");
+                    globalVariables.equation = '-';
+                }
             } 
             //5. MULTIPLY button - updating Equation to multplication
             else if (nodeValue === 'multiply') {
                 globalVariables.clickCounter++;
-                calcFunctions.updateScreen("0");
+                calcFunctions.updateMainScreen("0");
                 globalVariables.equation = '*';
             } 
             //5. DIVIDE button - updating Equation to division
             else if (nodeValue === 'divide') {
                 globalVariables.clickCounter++;
-                calcFunctions.updateScreen("0");
+                calcFunctions.updateMainScreen("0");
                 globalVariables.equation = '/';
             } 
             //5. DOT button - converting ints to floats
             else if (nodeValue === 'dot') {
                 if (globalVariables.clickCounter === 0) {
                     globalVariables.firstNumber = calcFunctions.changeToFloat();
-                    calcFunctions.updateScreen(globalVariables.firstNumber);
+                    calcFunctions.updateMainScreen(globalVariables.firstNumber);
                     console.log(`First Number changed to float!`);
                 }
                 else {
                     globalVariables.secondNumber = calcFunctions.changeToFloat();
-                    calcFunctions.updateScreen(globalVariables.secondNumber);
+                    calcFunctions.updateMainScreen(globalVariables.secondNumber);
                     console.log(`Second Number changed to float!`);
                 }
             }
-            //X. EQUAL button - executing calc functions depending on equation
+            //6. EQUAL button - executing calc functions depending on equation
             else if (nodeValue === 'equal') {
                 // 1. addiotion
                 if (globalVariables.equation === '+') {
                     globalVariables.score = calcFunctions.addition(globalVariables.firstNumber, globalVariables.secondNumber);
-                    calcFunctions.updateScreen(globalVariables.score);
+                    calcFunctions.updateMainScreen(globalVariables.score);
                     globalVariables.firstNumber = globalVariables.score;
-                    globalVariables.clickCounter = 0;
                     console.log(`Score: ${globalVariables.score}`);
                 } 
                 //2. subtraction
                 else if (globalVariables.equation === '-') {
                     globalVariables.score = calcFunctions.subtraction(globalVariables.firstNumber, globalVariables.secondNumber);
-                    calcFunctions.updateScreen(globalVariables.score);
+                    calcFunctions.updateMainScreen(globalVariables.score);
                     globalVariables.firstNumber = globalVariables.score;
+                    console.log(`Score: ${globalVariables.score}`);
                 }
                 //3. multiplication
                 else if (globalVariables.equation === '*') {
                     globalVariables.score = calcFunctions.multiplication(globalVariables.firstNumber, globalVariables.secondNumber);
-                    calcFunctions.updateScreen(globalVariables.score);
+                    calcFunctions.updateMainScreen(globalVariables.score);
                     globalVariables.firstNumber = globalVariables.score;
+                    console.log(`Score: ${globalVariables.score}`);
                 }
                 //4. division
                 else if (globalVariables.equation === '/') {
                     globalVariables.score = calcFunctions.division(globalVariables.firstNumber, globalVariables.secondNumber);
-                    calcFunctions.updateScreen(globalVariables.score);
+                    calcFunctions.updateMainScreen(globalVariables.score);
                     globalVariables.firstNumber = globalVariables.score;
+                    console.log(`Score: ${globalVariables.score}`);
                 }
+                globalVariables.clickCounter = 0;
             }
             //Number click events 
         } else {
@@ -107,11 +121,11 @@ document.addEventListener('click', e => {
             } else {
                 if (globalVariables.clickCounter === 0 ) {
                     globalVariables.firstNumber = calcFunctions.enterNumber(nodeValue);
-                    calcFunctions.updateScreen(globalVariables.firstNumber);
+                    calcFunctions.updateMainScreen(globalVariables.firstNumber);
                     console.log(`First Number: ${globalVariables.firstNumber}`);
                 } else {
                     globalVariables.secondNumber = calcFunctions.enterNumber(nodeValue);
-                    calcFunctions.updateScreen(globalVariables.secondNumber);
+                    calcFunctions.updateMainScreen(globalVariables.secondNumber);
                     console.log(`Second Number: ${globalVariables.secondNumber}`);
                 }
             }
