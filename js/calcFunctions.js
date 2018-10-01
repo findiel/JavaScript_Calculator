@@ -14,8 +14,10 @@ module.exports = {
     },
 
     changeToFloat: () => {
-        if (document.querySelector(UIController.DOMelements.mainScreen).textContent.substr(document.querySelector(UIController.DOMelements.mainScreen).textContent.length - 1) === ".") {
+        if (document.querySelector(UIController.DOMelements.mainScreen).textContent.search(/\./g) > -1) {
+            console.log('Don\'t cheat!');
             return document.querySelector(UIController.DOMelements.mainScreen).textContent;
+
         }
        else {
            return document.querySelector(UIController.DOMelements.mainScreen).textContent + ".";

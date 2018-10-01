@@ -5,6 +5,11 @@
 
 html {
   font-size: 62.5%; }
+  @media screen and (max-width: 370px) {
+    html {
+      font-size: 50%;
+    }
+  }
 
 .bg-video {
   width: 100%;

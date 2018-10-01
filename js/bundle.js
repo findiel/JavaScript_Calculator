@@ -22,8 +22,10 @@ module.exports = {
     },
 
     changeToFloat: () => {
-        if (document.querySelector(UIController.DOMelements.mainScreen).textContent.substr(document.querySelector(UIController.DOMelements.mainScreen).textContent.length - 1) === ".") {
+        if (document.querySelector(UIController.DOMelements.mainScreen).textContent.search(/\./g) > -1) {
+            console.log('Don\'t cheat!');
             return document.querySelector(UIController.DOMelements.mainScreen).textContent;
+
         }
        else {
            return document.querySelector(UIController.DOMelements.mainScreen).textContent + ".";
@@ -150,12 +152,12 @@ document.addEventListener('click', e => {
                 if (globalVariables.clickCounter === 0) {
                     globalVariables.firstNumber = calcFunctions.changeToFloat();
                     calcFunctions.updateScreen(globalVariables.firstNumber);
-                    console.log(`First Number: ${globalVariables.firstNumber}`);
+                    console.log(`First Number changed to float!`);
                 }
                 else {
                     globalVariables.secondNumber = calcFunctions.changeToFloat();
                     calcFunctions.updateScreen(globalVariables.secondNumber);
-                    console.log(`Second Number: ${globalVariables.secondNumber}`);
+                    console.log(`Second Number changed to float!`);
                 }
             }
             //X. EQUAL button - executing calc functions depending on equation
@@ -165,6 +167,7 @@ document.addEventListener('click', e => {
                     globalVariables.score = calcFunctions.addition(globalVariables.firstNumber, globalVariables.secondNumber);
                     calcFunctions.updateScreen(globalVariables.score);
                     globalVariables.firstNumber = globalVariables.score;
+                    globalVariables.clickCounter = 0;
                     console.log(`Score: ${globalVariables.score}`);
                 } 
                 //2. subtraction
