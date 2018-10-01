@@ -15,6 +15,7 @@ let globalVariables = {
 //1. Adding a negative number
 //2. Updating sub screen
 //3. Add key events
+//4. Upgreade events when rounding system dosent work properly
 document.addEventListener('click', e => {
     try {
         let nodeValue = e.srcElement.attributes.value.nodeValue;
