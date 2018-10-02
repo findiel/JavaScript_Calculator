@@ -38,7 +38,8 @@ html {
     border-bottom: 2px solid whitesmoke;
     padding: 1rem; }
     .calc-box .output__score {
-      font-size: 5rem; }
+      font-size: 5rem;
+      padding-top: .5rem; }
     .calc-box .output__equation {
       font-size: 1.5rem; }
   .calc-box__buttons {
