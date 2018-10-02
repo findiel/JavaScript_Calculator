@@ -1,9 +1,9 @@
 let UIController = require('./UIController');
 module.exports = {
     enterNumber: (num) => {
-        if (document.querySelector(UIController.DOMelements.mainScreen).textContent === "0") {
-            if (num == ".") {
-                return "0."
+        if (document.querySelector(UIController.DOMelements.mainScreen).textContent === '0') {
+            if (num == '.') {
+                return '0.'
             }
             else {
                 return num;
@@ -20,13 +20,13 @@ module.exports = {
 
         }
        else {
-           return document.querySelector(UIController.DOMelements.mainScreen).textContent + ".";
+           return document.querySelector(UIController.DOMelements.mainScreen).textContent + '.';
        }
 
     },
 
     changeToNegative: () => {
-        return "-"
+        return '-'
     },
 
     updateMainScreen: (arg) => {
@@ -34,7 +34,7 @@ module.exports = {
     },
 
     updateSubScreen: (arg) => {
-        document.querySelector(UIController.DOMelements.subScreen).textContent = arg;
+        document.querySelector(UIController.DOMelements.subScreen).textContent += arg;
     },
 
     addition: (firstNumber, secoundNumber) => {
@@ -74,13 +74,14 @@ module.exports = {
     },
 
     delete: () => {
-        document.querySelector(UIController.DOMelements.mainScreen).textContent = "0";
+        document.querySelector(UIController.DOMelements.mainScreen).textContent = '0';
+        document.querySelector(UIController.DOMelements.subScreen).textContent = '0';
     },
 
     removeLast: () => {
         let currNumber = document.querySelector(UIController.DOMelements.mainScreen).textContent;
         if (currNumber.length < 2) {
-            return "0";
+            return '0';
         } else {
             return currNumber.substring(0, currNumber.length - 1);
         }

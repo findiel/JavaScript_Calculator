@@ -9,9 +9,9 @@ module.exports = {
 let UIController = require('./UIController');
 module.exports = {
     enterNumber: (num) => {
-        if (document.querySelector(UIController.DOMelements.mainScreen).textContent === "0") {
-            if (num == ".") {
-                return "0."
+        if (document.querySelector(UIController.DOMelements.mainScreen).textContent === '0') {
+            if (num == '.') {
+                return '0.'
             }
             else {
                 return num;
@@ -28,13 +28,13 @@ module.exports = {
 
         }
        else {
-           return document.querySelector(UIController.DOMelements.mainScreen).textContent + ".";
+           return document.querySelector(UIController.DOMelements.mainScreen).textContent + '.';
        }
 
     },
 
     changeToNegative: () => {
-        return "-"
+        return '-'
     },
 
     updateMainScreen: (arg) => {
@@ -42,7 +42,7 @@ module.exports = {
     },
 
     updateSubScreen: (arg) => {
-        document.querySelector(UIController.DOMelements.subScreen).textContent = arg;
+        document.querySelector(UIController.DOMelements.subScreen).textContent += arg;
     },
 
     addition: (firstNumber, secoundNumber) => {
@@ -82,13 +82,14 @@ module.exports = {
     },
 
     delete: () => {
-        document.querySelector(UIController.DOMelements.mainScreen).textContent = "0";
+        document.querySelector(UIController.DOMelements.mainScreen).textContent = '0';
+        document.querySelector(UIController.DOMelements.subScreen).textContent = '0';
     },
 
     removeLast: () => {
         let currNumber = document.querySelector(UIController.DOMelements.mainScreen).textContent;
         if (currNumber.length < 2) {
-            return "0";
+            return '0';
         } else {
             return currNumber.substring(0, currNumber.length - 1);
         }
@@ -109,7 +110,6 @@ let globalVariables = {
 }
 
 //TODO:
-//1. Adding a negative number
 //2. Updating sub screen
 //3. Add key events
 document.addEventListener('click', e => {
@@ -120,8 +120,8 @@ document.addEventListener('click', e => {
             //1. AC button - deletes all
             if (nodeValue === 'remove-all') {
                 calcFunctions.delete();
-                globalVariables.firstNumber = "0";
-                globalVariables.secondNumber = "0";
+                globalVariables.firstNumber = '0';
+                globalVariables.secondNumber = '0';
                 globalVariables.clickCounter = 0;
             }
             //2. CE button - removes last number
@@ -140,7 +140,7 @@ document.addEventListener('click', e => {
             //3. PLUS button - updating Equation to addition
             else if (nodeValue === 'plus') {
                 globalVariables.clickCounter++;
-                calcFunctions.updateMainScreen("0");
+                calcFunctions.updateMainScreen('0');
                 globalVariables.equation = '+';
             } 
             //4. MINUS button - updating Equation to subtraction / adding a negative number
@@ -157,20 +157,20 @@ document.addEventListener('click', e => {
                 }
                 else {
                     globalVariables.clickCounter++;
-                    calcFunctions.updateMainScreen("0");
+                    calcFunctions.updateMainScreen('0');
                     globalVariables.equation = '-';
                 }
             } 
             //5. MULTIPLY button - updating Equation to multplication
             else if (nodeValue === 'multiply') {
                 globalVariables.clickCounter++;
-                calcFunctions.updateMainScreen("0");
+                calcFunctions.updateMainScreen('0');
                 globalVariables.equation = '*';
             } 
             //5. DIVIDE button - updating Equation to division
             else if (nodeValue === 'divide') {
                 globalVariables.clickCounter++;
-                calcFunctions.updateMainScreen("0");
+                calcFunctions.updateMainScreen('0');
                 globalVariables.equation = '/';
             } 
             //5. DOT button - converting ints to floats
@@ -221,7 +221,7 @@ document.addEventListener('click', e => {
             //Number click events 
         } else {
             if (document.querySelector('.output__score').textContent.length > 12) {
-                throw "Number Limit Error";
+                throw 'Number Limit Error';
             } else {
                 if (globalVariables.clickCounter === 0 ) {
                     globalVariables.firstNumber = calcFunctions.enterNumber(nodeValue);
