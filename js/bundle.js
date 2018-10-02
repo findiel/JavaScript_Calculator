@@ -46,7 +46,7 @@ module.exports = {
             return (parseFloat(firstNumber) + parseFloat(secoundNumber)).toPrecision(8);
         } 
         else {
-            return Math.round((parseFloat(firstNumber) + parseFloat(secoundNumber)) * 100000000) / 100000000;
+            return Math.round((parseFloat(firstNumber) + parseFloat(secoundNumber)) * 10000) / 10000;
         }
     },
 
@@ -55,7 +55,7 @@ module.exports = {
             return (parseFloat(firstNumber) - parseFloat(secoundNumber)).toPrecision(8);
         } 
         else {
-            return Math.round((parseFloat(firstNumber) - parseFloat(secoundNumber)) * 100000000) / 100000000;
+            return Math.round((parseFloat(firstNumber) - parseFloat(secoundNumber)) * 10000) / 10000;
         }
     },
 
@@ -64,7 +64,7 @@ module.exports = {
             return (parseFloat(firstNumber) * parseFloat(secoundNumber)).toPrecision(8);
         } 
         else {
-            return Math.round((parseFloat(firstNumber) * parseFloat(secoundNumber)) * 100000000) / 100000000;
+            return Math.round((parseFloat(firstNumber) * parseFloat(secoundNumber)) * 10000) / 10000;
         }
     },
 
@@ -73,7 +73,7 @@ module.exports = {
             return (parseFloat(firstNumber) / parseFloat(secoundNumber)).toPrecision(8);
         } 
         else {
-            return Math.round((parseFloat(firstNumber) / parseFloat(secoundNumber)) * 100000000) / 100000000;
+            return Math.round((parseFloat(firstNumber) / parseFloat(secoundNumber)) * 10000) / 10000;
         }
     },
 
@@ -108,6 +108,7 @@ let globalVariables = {
 //1. Adding a negative number
 //2. Updating sub screen
 //3. Add key events
+//4. Upgreade events when rounding system dosent work properly
 document.addEventListener('click', e => {
     try {
         let nodeValue = e.srcElement.attributes.value.nodeValue;
@@ -142,8 +143,7 @@ document.addEventListener('click', e => {
             //4. MINUS button - updating Equation to subtraction / adding a negative number
             else if (nodeValue === 'minus') {
                 if (document.querySelector(UIController.DOMelements.mainScreen).textContent === '0') {
-                    console.log("noob");
-                    calcFunctions.enterNumber("-");
+                    //TOTO - then ad your new calcFunction method - just like with a dot button.
                 }
                 else {
                     globalVariables.clickCounter++;
