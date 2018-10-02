@@ -15,7 +15,6 @@ let globalVariables = {
 //1. Adding a negative number
 //2. Updating sub screen
 //3. Add key events
-//4. Upgreade events when rounding system dosent work properly
 document.addEventListener('click', e => {
     try {
         let nodeValue = e.srcElement.attributes.value.nodeValue;
@@ -50,7 +49,14 @@ document.addEventListener('click', e => {
             //4. MINUS button - updating Equation to subtraction / adding a negative number
             else if (nodeValue === 'minus') {
                 if (document.querySelector(UIController.DOMelements.mainScreen).textContent === '0') {
-                    //TOTO - then ad your new calcFunction method - just like with a dot button.
+                    if (globalVariables.clickCounter === 0) {
+                        globalVariables.firstNumber = calcFunctions.changeToNegative();
+                        calcFunctions.updateMainScreen(globalVariables.firstNumber);
+                    }
+                    else {
+                        globalVariables.secondNumber = calcFunctions.changeToNegative();
+                        calcFunctions.updateMainScreen(globalVariables.secondNumber);
+                    }
                 }
                 else {
                     globalVariables.clickCounter++;

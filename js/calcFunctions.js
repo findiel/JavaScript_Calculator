@@ -25,6 +25,10 @@ module.exports = {
 
     },
 
+    changeToNegative: () => {
+        return "-"
+    },
+
     updateMainScreen: (arg) => {
         document.querySelector(UIController.DOMelements.mainScreen).textContent = arg;
     },
